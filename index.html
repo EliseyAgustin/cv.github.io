@@ -6,6 +6,7 @@
   <title>Curriculum | Agustin Elisey</title>
   <link rel="stylesheet" href="styles.css">
   <script src="index.js"></script>
+  <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css"
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
     <h3>Habilidades</h3>
     <ul>
       <li>Lenguajes de programacion: Java, JavaScript, C</li>
-      <li>Tecnologias web: html, css, JavaScript</li>
+      <li>Tecnologias web: Html, Css, JavaScript</li>
       <li>Habilidades sociales: Communicacion, Trabajo en equipo, resolucion de problemas</li>
     </ul>
   </section>
@@ -42,14 +43,55 @@
     </ul>
   </section>
   <section id="form">
-    <h2>Contactame</h2>
-    <form method="post">
-      <input type="name" name="name" placeholder="Nombre...">
-      <input type="name" name="name" placeholder="Apellido...">
-      <input type="email" name="email" placeholder="Mail...">
-      <textarea name="message" placeholder="Su mensaje..."></textarea>
-      <button type="button" onclick="devolverDatos()">Enviar</button>
-    </form>
+    <div class="container">
+      <h2>Contactame</h2>
+      <h3>¡Ingrese sus datos a continuación si quiere contactarse conmigo!</h3>
+      <form id="formulario">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" class="form-control" placeholder="Nombre..." id="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido:</label>
+          <input type="text" class="form-control" placeholder="Apellido..." id="apellido" required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" class="form-control" placeholder="Correo electronico..." id="correo" required>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa:</label>
+          <input type="text" class="form-control"  placeholder="Nombre de su empresa..." id="empresa" required>
+        </div>
+        <div class="form-group">
+          <label for="sueldo">Sueldo mínimo:</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="sueldo" min="10000" placeholder="Ingrese aqui el monto que desee..." required>
+            <select class="form-control" id="moneda">
+              <option value="pesos">&#36; (Pesos)</option>
+              <option value="dolares">&#36; (Dólares)</option>
+              <option value="euros">&#128; (Euros)</option>
+              <option value="reales">&#82;&#36; (Reales)</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="enviarDatos(event)">Enviar</button>
+      </form>
+  
+      <h2 class="table-h2">Resultados:</h2>
+      <table id="resultados" class="table">
+        <thead>
+          <tr>
+            <th onclick="ordenar('nombre')">Nombre</th>
+            <th onclick="ordenar('apellido')">Apellido</th>
+            <th onclick="ordenar('empresa')">Empresa</th>
+            <th onclick="ordenar('sueldo')">Sueldo mínimo</th>
+            <th onclick="ordenar('correo')">Correo electrónico</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </section>
   <footer>
     <p>2023 &copy; Agustin Elisey | Frontend Developer</p>
