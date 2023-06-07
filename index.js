@@ -61,6 +61,11 @@ let datos = [];
       const moneda = document.getElementById('moneda').value;
       const correo = document.getElementById('correo').value;
 
+      if (sueldo < 10000) {
+        alert('No se puede ingresar un monto menor a 10000');
+        return;
+      }
+
       console.log('Datos enviados:');
       console.log('Nombre:', nombre);
       console.log('Apellido:', apellido);
