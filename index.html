@@ -45,7 +45,7 @@
   <section id="form">
     <div class="container">
       <h2>Contactame</h2>
-      <h3>¡Ingrese sus datos a continuación si quiere contactarse conmigo!</h3>
+      <h3>¡Ingrese sus datos a continuación si quiere contactarse conmigo para costear un proyecto!</h3>
       <form id="formulario">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
@@ -57,42 +57,47 @@
         </div>
         <div class="form-group">
           <label for="correo">Correo electrónico:</label>
-          <input type="email" class="form-control" placeholder="Correo electronico..." id="correo" required>
+          <input type="email" class="form-control" placeholder="Correo electrónico..." id="correo" required>
         </div>
         <div class="form-group">
           <label for="empresa">Empresa:</label>
-          <input type="text" class="form-control"  placeholder="Nombre de su empresa..." id="empresa" required>
+          <input type="text" class="form-control" placeholder="Nombre de su empresa..." id="empresa" required>
         </div>
         <div class="form-group">
           <label for="sueldo">Sueldo mínimo:</label>
-          <div class="input-group">
-            <input type="number" class="form-control" id="sueldo" min="10000" placeholder="Ingrese aqui el monto que desee..." required>
-            <select class="form-control" id="moneda">
-              <option value="pesos">&#36; (Pesos)</option>
-              <option value="dolares">&#36; (Dólares)</option>
-              <option value="euros">&#128; (Euros)</option>
-              <option value="reales">&#82;&#36; (Reales)</option>
-            </select>
-          </div>
+          <input type="number" class="form-control" id="sueldo" min="10000" placeholder="Ingrese aquí el monto que desee en pesos argentinos(AR$). Monto minimo: 10.000..." required>
         </div>
         <button type="submit" class="btn btn-primary" onclick="enviarDatos(event)">Enviar</button>
       </form>
   
       <h2 class="table-h2">Resultados:</h2>
+
+      <div class="ordenar-container custom-select">
+        <label for="ordenar-select">Ordenar por:</label>
+        <select id="ordenar-select" onchange="ordenarTabla()">
+          <option value="ascendente">Ascendente</option>
+          <option value="descendente">Descendente</option>
+        </select>
+      </div>
+  
       <table id="resultados" class="table">
         <thead>
           <tr>
-            <th onclick="ordenar('nombre')">Nombre</th>
-            <th onclick="ordenar('apellido')">Apellido</th>
-            <th onclick="ordenar('empresa')">Empresa</th>
-            <th onclick="ordenar('sueldo')">Sueldo mínimo</th>
-            <th onclick="ordenar('correo')">Correo electrónico</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Empresa</th>
+            <th>Sueldo mínimo</th>
+            <th>&#36; (Dólares)</th>
+            <th>&#128; (Euros)</th>
+            <th>&#82;&#36; (Reales)</th>
+            <th>Correo electrónico</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
   </section>
+  
   <footer>
     <p>2023 &copy; Agustin Elisey | Frontend Developer</p>
   </footer>
