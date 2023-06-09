@@ -71,7 +71,7 @@
           <input type="text" class="form-control" placeholder="Nombre de su empresa..." id="empresa" required>
         </div>
         <div class="form-group">
-          <label for="sueldo">Sueldo mínimo:</label>
+          <label for="sueldo">Importe para costear su proyecto:</label>
           <input type="number" class="form-control" id="sueldo" min="10000" placeholder="Ingrese aquí el monto que desee en pesos argentinos(AR$). Monto mínimo: 10.000..." required>
         </div>
         <button type="submit" class="btn btn-primary" onclick="enviarDatos(event)">Enviar</button>
@@ -82,8 +82,8 @@
       <div class="ordenar-container">
         <label for="ordenar-select">Ordenar por:</label>
         <select id="ordenar-select" onchange="ordenarTabla()">
-          <option value="ascendente">Ordenar por el sueldo más bajo</option>
-          <option value="descendente">Ordenar por el sueldo más alto</option>
+          <option value="ascendente">Ordenar por el importe más bajo</option>
+          <option value="descendente">Ordenar por el importe más alto</option>
         </select>
       </div>
 
@@ -94,7 +94,7 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Empresa</th>
-            <th>Sueldo mínimo</th>
+            <th>Importe proyecto (AR$)</th>
             <th>&#36; (Dólares)</th>
             <th>&#128; (Euros)</th>
             <th>&#82;&#36; (Reales)</th>
