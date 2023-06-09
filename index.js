@@ -61,6 +61,9 @@
         alert('El sueldo ingresado no es válido. Por favor, ingrese un valor numérico mayor o igual a 10000.');
         return;
       }
+     
+     //Limpiar los campos del formulario una vez enviados los datos
+      document.getElementById('formulario').reset();
     
       const dolar = sueldoARS * 0.011;
       const euro = sueldoARS * 0.0095;
