@@ -122,7 +122,7 @@ section ul li {
 /* Estilo para el select */
 .ordenar-container select {
     appearance: none;
-    width: 280px;
+    width: 284px;
     margin-bottom: 10px;
     padding: 5px;
     font-size: 16px;
@@ -187,5 +187,3 @@ footer {
   footer a:hover {
     text-decoration: underline;
   }
-  
-  
