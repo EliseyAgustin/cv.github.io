@@ -121,7 +121,7 @@ section ul li {
   }
   
 .custom-select select {
-    width: 100%;
+    width: 128%;
     height: 40px;
     padding: 8px;
     font-size: 16px;
@@ -136,7 +136,7 @@ section ul li {
     content: '\25BC';
     position: absolute;
     top: 50%;
-    right: 12px;
+    right: -55px;
     transform: translateY(-50%);
     font-size: 18px;
     color: #555;
@@ -179,5 +179,3 @@ footer {
   footer a:hover {
     text-decoration: underline;
   }
-  
-  
