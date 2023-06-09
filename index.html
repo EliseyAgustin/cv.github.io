@@ -5,43 +5,50 @@
   <meta name="viewport" content="width=device-width">
   <title>Curriculum | Agustin Elisey</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="index.js"></script>
-  <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css"
+  <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="index.js"></script>
 </head>
 <body>
+  <!-- Informacion principal -->
   <header>
     <img src="images/avatar.jpg" alt="Profile Picture">
     <h1>Agustin Elisey</h1>
     <h2>Web Developer</h2>
   </header>
+
   <section class="about-me">
     <h3>Sobre mi</h3>
-<p>Soy un estudiante de Licenciatura en Informática y Tec. Univ. en Tecnologías Web de la Universidad Nacional del Oeste (UNO) en Argentina, con un fuerte interés y pasión por el desarrollo de software y la creación de soluciones tecnológicas innovadoras. Durante mi formación académica, he adquirido habilidades sólidas en programación, desarrollo web y aplicaciones móviles. Mi objetivo es seguir creciendo profesionalmente en el campo de la informática, aplicando mis conocimientos y habilidades para contribuir al desarrollo y avance tecnológico. </p>
+    <p>Soy un estudiante de Licenciatura en Informática y Tec. Univ. en Tecnologías Web de la Universidad Nacional del Oeste (UNO) en Argentina, con un fuerte interés y pasión por el desarrollo de software y la creación de soluciones tecnológicas innovadoras. Durante mi formación académica, he adquirido habilidades sólidas en programación, desarrollo web y aplicaciones móviles. Mi objetivo es seguir creciendo profesionalmente en el campo de la informática, aplicando mis conocimientos y habilidades para contribuir al desarrollo y avance tecnológico.</p>
   </section>
-    <section class="skills">
+
+  <section class="skills">
     <h3>Habilidades</h3>
     <ul>
-      <li>Lenguajes de programacion: Java, JavaScript, C</li>
-      <li>Tecnologias web: Html, Css, JavaScript</li>
-      <li>Habilidades sociales: Communicacion, Trabajo en equipo, resolucion de problemas</li>
+      <li>Lenguajes de programación: Java, JavaScript, C</li>
+      <li>Tecnologías web: HTML, CSS, JavaScript</li>
+      <li>Habilidades sociales: Comunicación, Trabajo en equipo, Resolución de problemas</li>
     </ul>
   </section>
-    <section class="experience">
+
+  <section class="experience">
     <h3>Experiencia</h3>
     <ul>
-      <li>Desarrollador Frontend, Corporacion ACME, 2017</li>
-      <li>Encargado de proyectos, Corporacion ACME, 2019</li>
-    </ul>
-    </section>
-    <section class="education">
-    <h3>Educacion</h3>
-    <ul>
-      <li>Bachillerato en Ciencias Sociales y Titulo de Asistente en Informatica en la EES Nº6. Argentina, Prov. De BS.AS.</li>
+      <li>Desarrollador Frontend, Corporación ACME, 2017</li>
+      <li>Encargado de proyectos, Corporación ACME, 2019</li>
     </ul>
   </section>
+
+  <section class="education">
+    <h3>Educación</h3>
+    <ul>
+      <li>Bachillerato en Ciencias Sociales y Título de Asistente en Informática en la EES Nº6. Argentina, Prov. De BS.AS.</li>
+    </ul>
+  </section>
+
+  <!-- Formulario -->
   <section id="form">
     <div class="container">
       <h2>Contactame</h2>
@@ -57,7 +64,7 @@
         </div>
         <div class="form-group">
           <label for="correo">Correo electrónico:</label>
-          <input type="email" class="form-control" placeholder="Correo electrónico..." id="correo" required>
+          <input type="email" class="form-control" placeholder="Su Correo electrónico. Ejemplo:(example@gmail.com)..." id="correo" required>
         </div>
         <div class="form-group">
           <label for="empresa">Empresa:</label>
@@ -65,21 +72,22 @@
         </div>
         <div class="form-group">
           <label for="sueldo">Sueldo mínimo:</label>
-          <input type="number" class="form-control" id="sueldo" min="10000" placeholder="Ingrese aquí el monto que desee en pesos argentinos(AR$). Monto minimo: 10.000..." required>
+          <input type="number" class="form-control" id="sueldo" min="10000" placeholder="Ingrese aquí el monto que desee en pesos argentinos(AR$). Monto mínimo: 10.000..." required>
         </div>
         <button type="submit" class="btn btn-primary" onclick="enviarDatos(event)">Enviar</button>
       </form>
-  
+
       <h2 class="table-h2">Resultados:</h2>
 
-      <div class="ordenar-container custom-select">
+      <div class="ordenar-container">
         <label for="ordenar-select">Ordenar por:</label>
         <select id="ordenar-select" onchange="ordenarTabla()">
-          <option value="ascendente">Ordenar por sueldo mas bajo</option>
-          <option value="descendente">Ordenar por sueldo mas alto</option>
+          <option value="ascendente">Ordenar por el sueldo más bajo</option>
+          <option value="descendente">Ordenar por el sueldo más alto</option>
         </select>
       </div>
-  
+
+      <!-- Tabla de resultados -->
       <table id="resultados" class="table">
         <thead>
           <tr>
@@ -97,7 +105,8 @@
       </table>
     </div>
   </section>
-  
+
+  <!-- Pie de pagina -->
   <footer>
     <p>2023 &copy; Agustin Elisey | Frontend Developer</p>
   </footer>

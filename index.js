@@ -1,4 +1,4 @@
- //Funcion para ordenar las columnas de la tabla de mayor a menor
+ //Funcion para ordenar las columnas de la tabla de mayor a menor y de menor a mayor
  function ordenarTabla() {
   const tablaResultados = document.getElementById('resultados');
   const tbody = tablaResultados.querySelector('tbody');
@@ -19,7 +19,7 @@
   });
 
   filas.forEach((fila) => {
-    tbody.appendChild(fila); // Reinsertar las filas en el orden correcto
+    tbody.appendChild(fila);
   });
 }
 
@@ -38,6 +38,17 @@
       document.getElementById('correo').value = '';
       document.getElementById('empresa').value = '';
       document.getElementById('sueldo').value = '';
+
+      const nombreRegex = /^[a-zA-Z\s]+$/;
+      if (!nombre.match(nombreRegex)) {
+        alert('El nombre solo debe contener caracteres. Por favor, verifique su entrada.');
+        return;
+      }
+    
+      if (!apellido.match(nombreRegex)) {
+        alert('El apellido solo debe contener caracteres. Por favor, verifique su entrada.');
+        return;
+      }
     
       // Validar que el sueldo sea un número válido y no sea menor a 10000
       if (isNaN(sueldoARS) || sueldoARS < 10000) {
