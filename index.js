@@ -1,84 +1,89 @@
-let datos = [];
+ //Funcion para ordenar las columnas de la tabla de mayor a menor
+ function ordenarTabla() {
+  const tablaResultados = document.getElementById('resultados');
+  const tbody = tablaResultados.querySelector('tbody');
+  const filas = Array.from(tbody.getElementsByTagName('tr'));
 
-    function ordenar(campo) {
-      const resultados = document.getElementById('resultados');
-      const ascendente = resultados.dataset.ascendente === 'true';
+  const ordenSelect = document.getElementById('ordenar-select');
+  const orden = ordenSelect.value;
 
-      datos.sort((a, b) => {
-        const valorA = a[campo];
-        const valorB = b[campo];
+  filas.sort((filaA, filaB) => {
+    const valorA = parseFloat(filaA.cells[3].innerText);
+    const valorB = parseFloat(filaB.cells[3].innerText);
 
-        if (ascendente) {
-          return valorA.localeCompare(valorB);
-        } else {
-          return valorB.localeCompare(valorA);
-        }
-      });
-
-      resultados.dataset.ascendente = !ascendente;
-      mostrarResultados();
+    if (orden === 'ascendente') {
+      return valorA - valorB;
+    } else {
+      return valorB - valorA;
     }
+  });
 
-    function mostrarResultados() {
-      const resultados = document.getElementById('resultados');
-      const tbody = resultados.querySelector('tbody');
-      tbody.innerHTML = '';
+  filas.forEach((fila) => {
+    tbody.appendChild(fila); // Reinsertar las filas en el orden correcto
+  });
+}
 
-      for (const dato of datos) {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-          <td>${dato.nombre}</td>
-          <td>${dato.apellido}</td>
-          <td>${dato.empresa}</td>
-          <td>${dato.sueldo} ${obtenerSimboloMoneda(dato.moneda)}</td>
-          <td>${dato.correo}</td>
-        `;
-        tbody.appendChild(fila);
-      }
-    }
-
-    function obtenerSimboloMoneda(moneda) {
-      switch (moneda) {
-        case 'pesos':
-          return '&#36;';
-        case 'dolares':
-          return '&#36;';
-        case 'euros':
-          return '&#128;';
-        case 'reales':
-          return '&#82;&#36;';
-        default:
-          return '';
-      }
-    }
-
+    //Funcion para enviar datos de formulario a la tabla
     function enviarDatos(event) {
       event.preventDefault();
+    
       const nombre = document.getElementById('nombre').value;
       const apellido = document.getElementById('apellido').value;
-      const empresa = document.getElementById('empresa').value;
-      const sueldo = document.getElementById('sueldo').value;
-      const moneda = document.getElementById('moneda').value;
       const correo = document.getElementById('correo').value;
-
-      if (sueldo < 10000) {
-        alert('No se puede ingresar un monto menor a 10000');
-        return;
-      }
-
-      console.log('Datos enviados:');
-      console.log('Nombre:', nombre);
-      console.log('Apellido:', apellido);
-      console.log('Empresa:', empresa);
-      console.log('Sueldo mínimo:', sueldo, obtenerSimboloMoneda(moneda));
-      console.log('Correo electrónico:', correo);
-
-      datos.push({ nombre, apellido, empresa, sueldo, moneda, correo });
-      mostrarResultados();
+      const empresa = document.getElementById('empresa').value;
+      const sueldoARS = parseFloat(document.getElementById('sueldo').value);
 
       document.getElementById('nombre').value = '';
       document.getElementById('apellido').value = '';
+      document.getElementById('correo').value = '';
       document.getElementById('empresa').value = '';
       document.getElementById('sueldo').value = '';
-      document.getElementById('correo').value = '';
+    
+      // Validar que el sueldo sea un número válido y no sea menor a 10000
+      if (isNaN(sueldoARS) || sueldoARS < 10000) {
+        alert('El sueldo ingresado no es válido. Por favor, ingrese un valor numérico mayor o igual a 10000.');
+        return;
+      }
+    
+      const dolar = sueldoARS * 0.011;
+      const euro = sueldoARS * 0.0095;
+      const real = sueldoARS * 0.058;
+    
+      const tablaResultados = document.getElementById('resultados').getElementsByTagName('tbody')[0];
+    
+      if (!isNaN(dolar) && !isNaN(euro) && !isNaN(real)) {
+        const nuevaFila = tablaResultados.insertRow();
+    
+        const celdaNombre = nuevaFila.insertCell();
+        celdaNombre.innerHTML = nombre;
+    
+        const celdaApellido = nuevaFila.insertCell();
+        celdaApellido.innerHTML = apellido;
+    
+        const celdaEmpresa = nuevaFila.insertCell();
+        celdaEmpresa.innerHTML = empresa;
+    
+        const celdaSueldoARS = nuevaFila.insertCell();
+        celdaSueldoARS.innerHTML = sueldoARS;
+    
+        const celdaSueldoDolares = nuevaFila.insertCell();
+        celdaSueldoDolares.innerHTML = dolar.toFixed(2);
+    
+        const celdaSueldoEuros = nuevaFila.insertCell();
+        celdaSueldoEuros.innerHTML = euro.toFixed(2);
+    
+        const celdaSueldoReales = nuevaFila.insertCell();
+        celdaSueldoReales.innerHTML = real.toFixed(2);
+    
+        const celdaCorreo = nuevaFila.insertCell();
+        celdaCorreo.innerHTML = correo;
+    
+        const filas = Array.from(tablaResultados.getElementsByTagName('tr'));
+        filas.sort((filaA, filaB) => {
+          const valorA = obtenerValorMoneda(filaA);
+          const valorB = obtenerValorMoneda(filaB);
+    
+          return valorB - valorA;
+        });
+      }
     }
