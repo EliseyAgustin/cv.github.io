@@ -49,6 +49,12 @@
         alert('El apellido solo debe contener caracteres. Por favor, verifique su entrada.');
         return;
       }
+
+       // Verificar si el formulario se envía vacío
+      if (!nombre || !apellido || !correo || !empresa || isNaN(sueldoARS)) {
+        alert('Por favor, complete todos los campos del formulario.');
+        return;
+      }
     
       // Validar que el sueldo sea un número válido y no sea menor a 10000
       if (isNaN(sueldoARS) || sueldoARS < 10000) {
